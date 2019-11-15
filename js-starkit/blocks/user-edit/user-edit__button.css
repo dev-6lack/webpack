@@ -1,0 +1,13 @@
+.user-edit__button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    font-size: 16px;
+  }
+  
+  @media screen and (max-width: 980px) {
+    .user-edit__button {
+      position: static;
+      margin-bottom: 40px;
+    }
+  }
