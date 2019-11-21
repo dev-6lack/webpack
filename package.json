@@ -1,12 +1,13 @@
 {
   "name": "yandex-webpack",
   "version": "1.0.0",
+  "homepage": "https://dev-6lack.github.io/yandex-webpack/",
   "description": "my first webpack project",
   "main": "mainModule.js",
   "scripts": {
     "build": "NODE_ENV=production rimraf dist && webpack --mode production",
     "dev": "NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "NODE_ENV=production gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/dev-6lack/yandex-webpack/issues"
   },
-  "homepage": "https://github.com/dev-6lack/yandex-webpack#readme",
+  "homepages": "https://github.com/dev-6lack/yandex-webpack#readme",
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
@@ -26,7 +27,7 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
-    "gh-pages": "^2.1.1",
+    "gh-pages": "~2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.8.0",
