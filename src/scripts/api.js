@@ -53,8 +53,6 @@ class API {
   };
 
   patchProfile() {
-    // let namePlace = document.querySelector('.user-info__name');
-    // let jobPlace = document.querySelector('.user-info__job');
 
     event.preventDefault();
 
