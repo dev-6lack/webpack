@@ -53,8 +53,6 @@ class API {
   };
 
   patchProfile() {
-    // let namePlace = document.querySelector('.user-info__name');
-    // let jobPlace = document.querySelector('.user-info__job');
 
     event.preventDefault();
 
@@ -76,7 +74,7 @@ class API {
     })
       .then(res => res.json())
        .then((result) => {
-        //newUserInfo(result.name, result.about)
+        newUserInfo(result.name, result.about)
        })
       .catch((err)=>{
         console.log('ОШИБКА: '+err);
