@@ -76,7 +76,7 @@ class API {
     })
       .then(res => res.json())
        .then((result) => {
-        //newUserInfo(result.name, result.about)
+        newUserInfo(result.name, result.about)
        })
       .catch((err)=>{
         console.log('ОШИБКА: '+err);
