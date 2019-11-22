@@ -1,14 +1,21 @@
 import "../pages/index.css"
-import {api} from './api.js'
+import {api, editName, editJob} from './api.js'
 import {popup, popupPlace} from './popup.js'
 import {validateInput, popupSaveButton, inputUserJob, inputUserName, popupAddButton, buttonPlaceValidateHandler} from './validate.js'
 import {Card} from './card.js'
 
 const cardsContainer = document.querySelector('.places-list');
 
+
+function changeUser (){
+  event.preventDefault();
+  api.newUserInfo(editName.value, editJob.value);
+  api.patchProfile();
+  //popup.close();
+  
+}
 export {cardsContainer}
 //Слушатели ------------------------------------------------------------------------------
-
 document.querySelector('.user-info__button').addEventListener('click', function () {
   popup.open(event);
  });
@@ -39,7 +46,7 @@ document.forms.new.addEventListener('submit', function() {
   document.forms.new.reset();
 });
 
-document.forms.profile.addEventListener('submit', api.editProfile);
+document.forms.profile.addEventListener('submit', changeUser);
 
 popupSaveButton.addEventListener('click', function(){
   popup.close(event);
