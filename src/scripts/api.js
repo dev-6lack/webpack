@@ -3,6 +3,8 @@ import {cardsContainer} from './mainModule.js'
 
 const userName = document.querySelector('.user-info__name');
 const userJob = document.querySelector('.user-info__job');
+const editName = document.querySelector('.popup__input_type_user-name');
+    const editJob = document.querySelector('.popup__input_type_user-job');
 
 const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort4/' : 'https://praktikum.tk/cohort4/';
 const tokenId = '758cfa4a-a628-4502-9850-9cd5d728ca39';
@@ -19,9 +21,9 @@ class API {
 
 
   uploadProfile() {
-    fetch(serverUrl + 'users/me', {
+    fetch(this.serverUrl + 'users/me', {
       headers: {
-          authorization: tokenId
+          authorization: this.tokenId
       }
       })
       .then(res => {
@@ -38,22 +40,31 @@ class API {
         console.log(err); 
       });
   }
+  //  changeUser (){
+  //   event.preventDefault();
+  //   api.patchProfile();
+  //   api.newUserInfo(editName.value, editJob.value);
+  //   popup.close();
+    
+  // }
+  newUserInfo (name, about) {
+    userName.textContent = name;
+    userJob.textContent = about;
+  };
 
-  editProfile() {
-    let namePlace = document.querySelector('.user-info__name');
-    let jobPlace = document.querySelector('.user-info__job');
+  patchProfile() {
+    // let namePlace = document.querySelector('.user-info__name');
+    // let jobPlace = document.querySelector('.user-info__job');
 
     event.preventDefault();
-    const editName = document.querySelector('.popup__input_type_user-name');
-    const editJob = document.querySelector('.popup__input_type_user-job');
 
-    if (editName.value.length !== 0 && editJob.value.length !== 0) {
+    // if (editName.value.length !== 0 && editJob.value.length !== 0) {
 
-    namePlace.textContent = editName.value;
-    jobPlace.textContent = editJob.value;
+    // userName.textContent = editName.value;
+    // userJob.textContent = editJob.value;
 
     fetch(this.serverUrl + 'users/me', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         authorization: this.tokenId,
         'Content-Type': 'application/json'
@@ -64,14 +75,13 @@ class API {
       })
     })
       .then(res => res.json())
-      .then((result) => {
-        newUserInfo (result.name, result.about)//, result.avatar)
-      })
+       .then((result) => {
+        //newUserInfo(result.name, result.about)
+       })
       .catch((err)=>{
         console.log('ОШИБКА: '+err);
       })
     }
-  }
 
   getInitialCards() {
     fetch(serverUrl + 'cards', {
@@ -95,4 +105,4 @@ class API {
 
 const api = new API(serverUrl, tokenId);
 
-export {userName, userJob, serverUrl, tokenId, API, api}
+export {userName, userJob, serverUrl, tokenId, API, api, editName, editJob}
